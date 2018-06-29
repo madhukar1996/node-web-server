@@ -19,9 +19,9 @@ app.use((req,res,next)=>{
 	})
 	next();
 })
-app.use((req,res,next)=>{
-	res.render('maintainance.hbs')
-})
+// app.use((req,res,next)=>{
+// 	res.render('maintainance.hbs')
+// })
 app.use(express.static(__dirname+'/public'));
 hbs.registerHelper('getCurrentYear',()=>{
 	return new Date().getFullYear()
@@ -46,7 +46,11 @@ app.get('/about',(req,res)=>{
 app.get('/bad',(req,res)=>{
 	res.send('error')
 })
-
+app.get('/portfolio',(req,res)=>{
+	res.render('portfolio.hbs',{
+		pageTitle:'portfolio page'
+	})
+})
 app.listen(port,()=>{
 console.log(`Server is up on port ${port}`)
 });
